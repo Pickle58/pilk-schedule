@@ -123,8 +123,8 @@ export async function GET(request: NextRequest) {
           email: googleUser.email,
           provider: "google",
           accessToken: tokens.access_token,
-          refreshToken: tokens.refresh_token || "",
-          expiryDate: tokens.expiry_date || 0,
+          refreshToken: tokens.refresh_token ?? null,
+          expiryDate: tokens.expiry_date ?? null,
           isDefault: isFirstAccount, // First account is default
           connectedAt: new Date().toISOString(),
         },
