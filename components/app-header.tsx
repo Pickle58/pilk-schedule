@@ -27,6 +27,7 @@ export function AppHeader() {
       <Link
         key={item.href}
         href={item.href}
+        aria-label={item.label}
         className={cn(
           "inline-flex items-center gap-2 rounded-md px-2 sm:px-3 py-2 text-sm font-medium transition-colors",
           isActive
@@ -34,7 +35,7 @@ export function AppHeader() {
             : "text-blue-100 hover:bg-blue-600 hover:text-white",
         )}
       >
-        <Icon className="size-4" />
+        <Icon className="size-4" aria-hidden="true" />
         <span className="hidden sm:inline">{item.label}</span>
       </Link>
     );
