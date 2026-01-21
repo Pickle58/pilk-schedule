@@ -43,7 +43,14 @@ export const bookingType = defineType({
       name: "endTime",
       title: "End Time",
       type: "datetime",
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) =>
+        Rule.required().custom((endTime, context) => {
+          const startTime = context.document?.startTime as string | undefined
+          if (!endTime || !startTime) return true
+          return new Date(endTime) > new Date(startTime)
+            ? true
+            : "End time must be after start time"
+        }),
     }),
     defineField({
       name: "googleEventId",
