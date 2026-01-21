@@ -99,7 +99,7 @@ export async function GET(request: NextRequest) {
           [`connectedAccounts[accountId=="${googleUser.id}"].accessToken`]:
             tokens.access_token,
           [`connectedAccounts[accountId=="${googleUser.id}"].refreshToken`]:
-            tokens.refresh_token || existingAccount,
+            tokens.refresh_token ?? existingAccount.refreshToken,
           [`connectedAccounts[accountId=="${googleUser.id}"].expiryDate`]:
             tokens.expiry_date,
         })
